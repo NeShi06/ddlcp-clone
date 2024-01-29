@@ -1,0 +1,71 @@
+<section id="features" class="w-full">
+  <footer
+    class="sticky flex h-12 w-full justify-between bg-[#f2cece] after:absolute after:left-0 after:top-0 after:-z-10 after:h-full after:w-full after:bg-[url('/backgrounds/Dot_Pattern_Pink.svg')] after:opacity-20 after:[background-position:50%] after:[background-size:16px]"
+  >
+    <picture class="h-inherit grid w-36 place-items-center bg-white/30">
+      <img
+        class="h-10 object-contain"
+        src="/miscellaneous/Logo_Mini.webp"
+        alt="Doki-Doki Logo."
+        loading="lazy"
+      />
+    </picture>
+
+    <div
+      class="h-inherit relative z-10 me-2 grid w-36 place-items-center sm:me-6"
+    >
+      <p id="timer" class="font-riffic text-2xl text-doki-purple">12:00 AM</p>
+    </div>
+  </footer>
+</section>
+
+<script>
+  const $timer = document.querySelector('#timer') as HTMLElement
+  let time = 0
+  let firstTime = true
+  let timers: Timers = {
+    currentTimeout: null,
+    currentInterval: null
+  }
+
+  let { currentInterval, currentTimeout } = timers
+
+  const interval: () => any = () => {
+    if (firstTime) {
+      currentTimeout = setTimeout(timer, time)
+      return (firstTime = false)
+    }
+
+    if (currentTimeout !== null) {
+      clearTimeout(currentTimeout)
+      currentTimeout = null
+    }
+
+    currentInterval = setInterval(timer, time)
+    return currentInterval
+  }
+
+  const timer: () => any = () => {
+    const currentTime = new Date()
+    let hours = currentTime.getHours()
+    const minutes = currentTime.getMinutes()
+    const AMPM = hours > 12 ? 'PM' : 'AM'
+    time = firstTime ? 60000 - currentTime.getSeconds() * 1000 : 60000
+
+    if (hours >= 12) hours -= 12
+    if (hours == 0) hours = 12
+
+    const currentHours = hours.toString().padStart(2, '0')
+    const currentMinutes = minutes.toString().padStart(2, '0')
+
+    if (firstTime === false) {
+      if (currentTimeout !== null) interval()
+      return ($timer.innerHTML = `${currentHours}:${currentMinutes} ${AMPM}`)
+    }
+
+    $timer.innerHTML = `${currentHours}:${currentMinutes} ${AMPM}`
+    return interval()
+  }
+
+  timer()
+</script>

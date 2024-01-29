@@ -1,0 +1,31 @@
+---
+import { Icon } from 'astro-icon/components'
+import { storesData } from '@/data/stores.data.ts'
+---
+
+<div
+  class="fixed bottom-0 left-1/2 z-30 flex -translate-x-1/2 items-center justify-center bg-doki-magenta text-white"
+>
+  <p
+    class="me-6 ms-4 hidden whitespace-nowrap font-aller text-base sm:block lg:text-lg"
+  >
+    Available Now!
+  </p>
+  <ul class="flex items-center justify-center">
+    {
+      Object.entries(storesData).map(([key, el]) => (
+        <li class="h-full w-12 sm:w-14">
+          <a
+            href={el.link}
+            class="flex h-full w-full justify-center bg-transparent py-4 transition-colors hover:bg-doki-purple"
+            aria-label={`${key}'s buying page`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Icon name={key} class="h-6 w-6 text-white" size={25} />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

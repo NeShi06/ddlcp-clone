@@ -1,0 +1,68 @@
+---
+import { Icon } from 'astro-icon/components'
+import { navbarData } from '@/data/navbar.data'
+---
+
+<header class="fixed left-[2.5%] top-4 z-30 sm:top-6">
+  <label
+    for="menu-check"
+    class="z-50 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full border-2 border-white bg-doki-pink p-1 transition-colors hover:bg-doki-magenta"
+  >
+    <Icon
+      name="Menu"
+      size={30}
+      class="rotate-0 text-white transition-all peer-checked:rotate-45"
+    />
+  </label>
+</header>
+
+<div>
+  <input id="menu-check" type="checkbox" class="peer hidden" />
+
+  <label
+    for="menu-check"
+    class="pointer-events-none invisible fixed left-0 top-0 -z-20 h-screen w-full bg-[#520c57]/30 opacity-0 transition-opacity duration-[350ms] peer-checked:pointer-events-auto peer-checked:visible peer-checked:z-10 peer-checked:opacity-100"
+  ></label>
+
+  <nav
+    class="pointer-events-none invisible fixed left-0 top-0 z-[15] w-full scale-90 bg-white opacity-0 transition-all duration-[350ms] after:absolute after:top-0 after:z-20 after:h-1 after:w-full after:bg-doki-purple peer-checked:pointer-events-auto peer-checked:visible peer-checked:scale-100 peer-checked:opacity-100 sm:w-1/2 md:w-[45%] lg:w-2/6 xl:w-[28%]"
+  >
+    <div
+      class='before:absolute before:left-0 before:top-0 before:z-[15] before:h-full before:w-full before:bg-[url("/backgrounds/Dot_Pattern_Pink.svg")] before:[background-position:50%] before:[background-size:26px] after:absolute after:left-0 after:top-0 after:z-[16] after:block after:h-full after:w-full after:bg-[linear-gradient(rgba(255,255,255,0)_5%,#fff_50%,#fff)]'
+    >
+    </div>
+
+    <ul
+      id="menu-links"
+      class="relative z-20 flex flex-col pb-4 pt-28 text-doki-purple"
+    >
+      {
+        Object.entries(navbarData).map(([key, link]) => (
+          <li class="w-full">
+            <a
+              href={link}
+              id="menu-link"
+              class="block w-full bg-transparent px-10 py-[0.4375rem] font-aller text-xl tracking-wide transition-colors hover:text-white hover:[background:linear-gradient(270deg,_#e61484,_#831f8a)] sm:text-2xl"
+              aria-label={`Go to ${key} section`}
+            >
+              {key}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<script>
+  const links = document.querySelector('#menu-links') as HTMLElement
+  const input = document.querySelector('#menu-check') as HTMLInputElement
+
+  links.addEventListener('click', (e) => {
+    const element = e.target as HTMLElement
+
+    if (element.nodeName === 'A') return (input.checked = false)
+
+    return
+  })
+</script>

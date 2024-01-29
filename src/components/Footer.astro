@@ -1,0 +1,111 @@
+---
+import { Icon } from 'astro-icon/components'
+import Button from '@/components/Button.astro'
+---
+
+<footer class="relative z-10 flex flex-col bg-doki-pink pt-8">
+  <section
+    class="flex h-full w-full flex-col items-center justify-center gap-6"
+  >
+    <Button
+      link="http://serenityforge.com/games/doki-doki-literature-club-plus/press-kit"
+      color="purple"
+      hover="magenta"
+      blank={true}
+      bordered
+    >
+      Get the Press Kit
+    </Button>
+
+    <ul class="flex gap-3">
+      <li>
+        <a
+          href="https://twitter.com/TeamSalvato"
+          target="_blank"
+          rel="noreferrer"
+          class="flex items-center justify-center rounded-full border-2 border-doki-purple bg-transparent p-3 text-doki-purple transition-colors hover:bg-doki-purple hover:text-white"
+        >
+          <Icon name="Facebook" size={20} />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://twitter.com/TeamSalvato"
+          target="_blank"
+          rel="noreferrer"
+          class="flex items-center justify-center rounded-full border-2 border-doki-purple bg-transparent p-3 text-doki-purple transition-colors hover:bg-doki-purple hover:text-white"
+        >
+          <Icon name="Twitter" size={20} />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://twitter.com/TeamSalvato"
+          target="_blank"
+          rel="noreferrer"
+          class="flex items-center justify-center rounded-full border-2 border-doki-purple bg-transparent p-3 text-doki-purple transition-colors hover:bg-doki-purple hover:text-white"
+        >
+          <Icon name="Youtube" size={20} />
+        </a>
+      </li>
+    </ul>
+
+    <p
+      class="max-w-[60ch] text-pretty text-center font-aller text-sm text-doki-purple"
+    >
+      Copyright © 2021 Dan Salvato LLC & Serenity Forge LLC. Serenity Forge™
+      and the related logo are trademarks of Serenity Forge LLC. All Rights
+      Reserved. Warranty & Support:
+      <a
+        href="https://serenityforge.com/"
+        class="tracking-wider text-white underline"
+        rel="noreferrer"
+      >
+        https://serenityforge.com/
+      </a>
+    </p>
+
+    <a
+      href="/privacy-policy"
+      class="text-center font-aller text-sm font-bold tracking-wider text-white underline"
+    >
+      Privacy Policy
+    </a>
+  </section>
+
+  <section class="mt-8 flex justify-center bg-[#272727]">
+    <ul class="mx-4 my-6 flex flex-col gap-8 sm:mx-0 md:flex-row">
+      <li class="flex flex-col items-center justify-center">
+        <img
+          class="w-full sm:w-[222px]"
+          src="/miscellaneous/DDLCESRB.webp"
+          width="222.3"
+          height="120"
+          loading="lazy"
+          alt="ESRB Mature 17+. Violence, Blood, Suggestive Themes, Strong Language."
+        />
+        <p class="mt-4 font-aller font-bold text-white">North America</p>
+      </li>
+      <li class="flex flex-col items-center justify-center">
+        <img
+          src="/miscellaneous/PEGI18.webp"
+          width="98.3"
+          height="120"
+          loading="lazy"
+          alt="PEGI 18."
+        />
+        <p class="mt-4 font-aller font-bold text-white">Europe</p>
+      </li>
+      <li class="flex flex-col items-center justify-center">
+        <img
+          src="/miscellaneous/USK18.webp"
+          width="120"
+          height="120"
+          loading="lazy"
+          alt="USK 18."
+        />
+        <p class="mt-4 font-aller font-bold text-white">Germany</p>
+      </li>
+    </ul>
+  </section>
+</footer>

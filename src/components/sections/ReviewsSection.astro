@@ -1,0 +1,23 @@
+---
+import SwiperContainer from '@components/SwiperContainer'
+---
+
+<section
+  id="reviews"
+  class="w-full rounded-t-[50%_17.5%] bg-doki-magenta py-16 text-white"
+>
+  <h2 class="text-center font-riffic text-xl font-bold md:text-2xl lg:text-3xl">
+    A terrifying world of romance and poetry awaits!
+  </h2>
+  <article class="w-full">
+    <p
+      class="mx-auto mb-12 mt-6 max-w-[25ch] text-pretty text-center font-aller text-lg italic text-doki-light-pink md:max-w-[55ch] 2xl:text-xl"
+    >
+      Now’s your chance to discover why Doki Doki Literature Club is one of the
+      most beloved psychological horror games of the decade.
+    </p>
+    <div class="flex max-w-full">
+      <SwiperContainer client:visible={{ rootMargin: "150px" }} />
+    </div>
+  </article>
+</section>

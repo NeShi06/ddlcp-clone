@@ -1,0 +1,48 @@
+<div class="relative z-30">
+  <input id="trailer-input" type="checkbox" class="peer hidden" />
+
+  <div
+    class="pointer-events-none invisible fixed bottom-0 left-0 right-0 top-0 h-full w-full bg-doki-purple/70 opacity-0 transition-all duration-[350ms] peer-checked:pointer-events-auto peer-checked:visible peer-checked:opacity-100"
+  />
+
+  <label
+    for="trailer-input"
+    class="pointer-events-none bg-tranparent invisible fixed flex justify-center items-center h-full right-0 z-[100] w-full scale-90 opacity-0 transition-all peer-checked:pointer-events-auto peer-checked:visible peer-checked:scale-100 peer-checked:opacity-100 sm:max-w-[100vw]"
+  >
+    <div
+      class="relative flex justify-center items-center mx-4 aspect-video w-full h-full md:mx-0 md:max-w-2xl xl:max-w-5xl"
+    >
+      <lite-youtube
+        class="aspect-video border-4 border-doki-pink"
+        videoid="soEwoP20Bw8"
+        videotitle="Doki Doki Literature Club Plus! - Launch Trailer"
+      >
+      </lite-youtube>
+    </div>
+  </label>
+</div>
+
+<script>
+  import '@justinribeiro/lite-youtube'
+
+  const $label = document.getElementById('trailer-label') as HTMLElement
+
+  const options: IntersectionObserverInit = {
+    threshold: 1
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        $label.classList.add('pointer-events-auto')
+        $label.classList.add('opacity-100')
+        $label.classList.add('animate-jump-in')
+        $label.classList.add('animate-duration-300')
+        $label.classList.add('animate-delay-150')
+        observer.unobserve($label)
+      }
+    })
+  }, options)
+
+  observer.observe($label)
+</script>

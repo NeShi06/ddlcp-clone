@@ -1,0 +1,64 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import IntroSection from '@/components/sections/IntroSection.astro'
+import ReviewsSection from '@/components/sections/ReviewsSection.astro'
+import FeaturesSection from '@components/sections/FeaturesSection.astro'
+import CharSection from '@components/sections/CharSection'
+import BuyNowSection from '@components/sections/BuyNowSection.astro'
+---
+
+<Layout title="Doki Doki Literature Club Plus!">
+  <IntroSection />
+
+  <div class="relative z-20">
+    <ReviewsSection />
+
+    <FeaturesSection />
+
+    <CharSection client:visible={{ rootMargin: '200px' }} />
+
+    <BuyNowSection />
+  </div>
+
+  <script>
+    const $logo = document.getElementById('logo') as HTMLElement
+    const $backgrounds = document.querySelectorAll(
+      '[data-background]'
+    ) as NodeListOf<HTMLElement>
+    const characters = {
+      $backChar: document.querySelectorAll(
+        '[data-back-character]'
+      ) as NodeListOf<HTMLElement>,
+      $frontChar: document.querySelectorAll(
+        '[data-front-character]'
+      ) as NodeListOf<HTMLElement>
+    }
+
+    const { $backChar, $frontChar } = characters
+
+    const getPositions = () => {
+      const bgPosition = window.scrollY * 0.05
+      const logoPosition = 40 + window.scrollY * 1.25
+      const frontPosition = window.scrollY * 0.125
+      const backPosition = window.scrollY * 0.05
+
+      $logo.style.setProperty('--top', `${logoPosition}px`)
+
+      $frontChar.forEach($char => (
+        $char.style.setProperty('--top', `${frontPosition}px`)
+      ))
+      $backChar.forEach($char => (
+        $char.style.setProperty('--top', `${backPosition}px`)
+      ))
+      $backgrounds.forEach($bg => (
+        $bg.style.setProperty('--top', `${bgPosition}px`)
+      ))
+    }
+
+    getPositions()
+
+    window.addEventListener('scroll', () => {
+      getPositions()
+    })
+  </script>
+</Layout>

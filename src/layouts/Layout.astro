@@ -1,0 +1,72 @@
+---
+import Navbar from '@components/Navbar/Navbar.astro'
+import Trailer from '@components/Trailer.astro'
+import Footer from '@components/Footer.astro'
+
+interface Props {
+  title: string
+  description?: string
+}
+
+const { title, description } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="any" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:image" content="/banner.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:description" content="" />
+    <link rel="preload" href="/fonts/Riffic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  </head>
+  <body class="relative antialiased">
+    <Navbar />
+    <Trailer />
+    <main class="relative z-0">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  @font-face {
+    font-family: 'Riffic';
+    src: url('/fonts/Riffic.woff2') format('woff2');
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Aller';
+    src: url('/fonts/Aller.woff2') format('woff2');
+    font-display: swap;
+  }
+  html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  *:after,
+  *::before {
+    box-sizing: inherit;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  img {
+    max-width: 100%;
+    vertical-align: middle;
+    display: inline-block;
+    pointer-events: none;
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+interface Props {
+  classes?: string
+  link: string
+  bordered?: boolean
+  color: string | 'pink'
+  hover?: 'magenta' | 'pink'
+  blank?: boolean
+}
+
+const { classes = '', link, color, hover, bordered = false, blank = false } = Astro.props
+---
+
+<a
+  href={link}
+  target={blank ? '_blank' : null}
+  rel={blank ? 'noreferrer' : null}
+  class:list={[
+    `flex min-h-14 items-center justify-center rounded-full px-3 py-4 font-riffic text-xs font-bold text-white transition-colors sm:px-4 lg:text-sm 2xl:text-lg ${classes}`,
+    { 'border-2 border-white': bordered },
+    { 'bg-doki-pink': color === 'pink' },
+    { 'bg-doki-purple': color === 'purple' },
+    { 'hover:bg-doki-magenta': hover === 'magenta' },
+    { 'hover:bg-doki-pink': hover === 'pink' }
+  ]}
+>
+  <slot />
+</a>
