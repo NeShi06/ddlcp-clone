@@ -35,7 +35,7 @@ function CharSection() {
           )}
         >
           <div
-            className={`absolute h-full w-full ${char.colors.background} [background-attachment:scroll] absolute left-0 top-0 -z-20 h-[150vh] opacity-30 w-full -translate-y-[var(--top)] animate-bounce bg-[url("/backgrounds/Dot_Pattern_Pink.svg")] transition-transform animate-duration-[1500ms] animate-once [background-position:50%] [background-size:80px] after:absolute after:left-0 after:top-0 after:-z-10 after:block after:h-full after:w-full md:flex-row ${char.colors.effect}`}
+            className={`absolute h-[110vh] w-full ${char.colors.background} [background-attachment:scroll] absolute left-0 top-0 -z-20 h-[150vh] flex w-full -translate-y-[var(--top)] animate-bounce bg-[url("/backgrounds/Dot_Pattern_Pink.svg")] transition-transform animate-duration-[1500ms] animate-once [background-position:50%] [background-size:80px] after:absolute after:left-0 after:top-0 after:block after:h-full after:w-full after:bg-gradient-to-b md:flex-row ${char.colors.effect}`}
           />
 
           <div className="relative z-50 flex h-full w-full items-center justify-center lg:w-3/5 lg:justify-end">

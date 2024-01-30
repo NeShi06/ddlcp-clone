@@ -6,7 +6,7 @@ export const charTabs = {
       background: 'bg-doki-sayori',
       text: 'text-doki-sayori-text',
       effect:
-        'before:opacity-20 after:bg-[linear-gradient(rgba(131,31,138,0)5%,#9ccaff_70%,#9ccaff)]'
+        'opacity-20 after:from-transparent after:from-5% after:via-[#9ccaff]/60 after:via-25% after:to-[#9ccaff] after:to-70%'
     },
     images: {
       chibi: '/characters/Sayori-Chibi-HC.webp',
@@ -29,7 +29,7 @@ export const charTabs = {
       background: 'bg-doki-natsuki',
       text: 'text-doki-natsuki-text',
       effect:
-        'before:opacity-20 after:bg-[linear-gradient(rgba(131,31,138,0)5%,#ffa7e3_70%,#ffa7e3)]'
+        'opacity-20 after:from-transparent after:from-5% after:via-[#ffa7e3]/60 after:via-25% after:to-[#ffa7e3] after:to-70%'
     },
     images: {
       chibi: '/characters/Natsuki-Chibi-HC.webp',
@@ -52,7 +52,7 @@ export const charTabs = {
       background: 'bg-doki-yuri',
       text: 'text-doki-yuri-text',
       effect:
-        'before:opacity-20 after:bg-[linear-gradient(rgba(131,31,138,0)5%,#a9a5ff_70%,#a9a5ff)]'
+        'opacity-20 after:from-transparent after:from-5% after:via-[#a9a5ff]/60 after:via-25% after:to-[#a9a5ff] after:to-70%'
     },
     images: {
       chibi: '/characters/Yuri-Chibi-HC.webp',
@@ -75,7 +75,7 @@ export const charTabs = {
       background: 'bg-doki-monika',
       text: 'text-doki-monika-text',
       effect:
-        'before:opacity-50 after:bg-[linear-gradient(rgba(131,31,138,0)5%,#9ff3bc_70%,#9ff3bc)]'
+        'opacity-50 after:from-transparent after:from-5% after:via-[#9ff3bc]/60 after:via-25% after:to-[#9ff3bc] after:to-70%'
     },
     images: {
       chibi: '/characters/Monika-Chibi-HC.webp',
