@@ -5,7 +5,7 @@ import FeaturesDesktop from '../FeaturesDesktop'
 
 <section
   id="features"
-  class="flex flex-col-reverse relative min-h-screen w-full bg-[#ddb3ff] lg:h-screen lg:flex-col"
+  class="relative flex min-h-screen w-full flex-col-reverse bg-[#ddb3ff] lg:h-screen lg:flex-col"
 >
   <picture class="absolute hidden w-full lg:block">
     <img
@@ -32,11 +32,12 @@ import FeaturesDesktop from '../FeaturesDesktop'
         src="/miscellaneous/Logo_Mini.webp"
         alt="Doki-Doki Logo."
         loading="lazy"
+        decoding="async"
       />
     </picture>
 
     <div
-      class="h-inherit relative z-10 me-2 grid w-36 place-items-center sm:me-6"
+      class="h-inherit invisible relative z-10 me-2 grid w-36 place-items-center sm:me-6 lg:visible"
     >
       <p id="timer" class="font-riffic text-2xl text-doki-purple">12:00 AM</p>
     </div>
