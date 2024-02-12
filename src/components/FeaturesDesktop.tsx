@@ -17,6 +17,8 @@ function FeaturesDesktop() {
                 src={`/banners/Banner_0${i + 1}.webp`}
                 className="aspect-video w-full max-w-[768px]"
                 alt={feat.alt}
+                loading="lazy"
+                decoding="async"
               />
             </picture>
 
