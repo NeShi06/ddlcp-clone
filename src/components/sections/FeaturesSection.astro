@@ -1,6 +1,30 @@
-<section id="features" class="w-full">
+---
+import FeaturesMobile from '../FeaturesMobile.astro'
+import FeaturesDesktop from '../FeaturesDesktop'
+---
+
+<section
+  id="features"
+  class="flex flex-col-reverse relative min-h-screen w-full bg-[#ddb3ff] lg:h-screen lg:flex-col"
+>
+  <picture class="absolute hidden w-full lg:block">
+    <img
+      class="h-screen w-full object-cover"
+      src="/backgrounds/Plus_2_HD_Wallpaper.webp"
+      sizes="100vw"
+      srcset="/backgrounds/Plus_2_HD_Wallpaper-p-500.webp 500w, /backgrounds/Plus_2_HD_Wallpaper-p-800.webp 800w, /backgrounds/Plus_2_HD_Wallpaper-p-1080.webp 1080w, /backgrounds/Plus_2_HD_Wallpaper.webp 1920w"
+      loading="lazy"
+      decoding="async"
+    />
+  </picture>
+
+  <div class="relative left-0 top-0 h-[92%]">
+    <FeaturesMobile />
+    <FeaturesDesktop client:visible={{ rootMargin: '200px' }} />
+  </div>
+
   <footer
-    class="sticky flex h-12 w-full justify-between bg-[#f2cece] after:absolute after:left-0 after:top-0 after:-z-10 after:h-full after:w-full after:bg-[url('/backgrounds/Dot_Pattern_Pink.svg')] after:opacity-20 after:[background-position:50%] after:[background-size:16px]"
+    class="sticky bottom-0 flex h-[8%] w-full justify-between bg-[#f2cece] after:absolute after:left-0 after:top-0 after:-z-10 after:h-full after:w-full after:bg-[url('/backgrounds/Dot_Pattern_Pink.svg')] after:opacity-20 after:[background-position:50%] after:[background-size:16px] lg:bottom-[unset]"
   >
     <picture class="h-inherit grid w-36 place-items-center bg-white/30">
       <img
@@ -21,6 +45,7 @@
 
 <script>
   const $timer = document.querySelector('#timer') as HTMLElement
+  const desktopMediaQuery = window.matchMedia('(min-width: 1024px)')
   let time = 0
   let firstTime = true
   let timers: Timers = {
@@ -46,26 +71,32 @@
   }
 
   const timer: () => any = () => {
-    const currentTime = new Date()
-    let hours = currentTime.getHours()
-    const minutes = currentTime.getMinutes()
-    const AMPM = hours > 12 ? 'PM' : 'AM'
-    time = firstTime ? 60000 - currentTime.getSeconds() * 1000 : 60000
+    if (desktopMediaQuery.matches) {
+      const currentTime = new Date()
+      let hours = currentTime.getHours()
+      const minutes = currentTime.getMinutes()
+      const AMPM = hours >= 12 ? 'PM' : 'AM'
+      time = firstTime ? 60000 - currentTime.getSeconds() * 1000 : 60000
 
-    if (hours >= 12) hours -= 12
-    if (hours == 0) hours = 12
+      if (hours >= 12) hours -= 12
+      if (hours == 0) hours = 12
 
-    const currentHours = hours.toString().padStart(2, '0')
-    const currentMinutes = minutes.toString().padStart(2, '0')
+      const currentHours = hours.toString().padStart(2, '0')
+      const currentMinutes = minutes.toString().padStart(2, '0')
 
-    if (firstTime === false) {
-      if (currentTimeout !== null) interval()
-      return ($timer.innerHTML = `${currentHours}:${currentMinutes} ${AMPM}`)
+      if (firstTime === false) {
+        if (currentTimeout !== null) interval()
+        return ($timer.innerHTML = `${currentHours}:${currentMinutes} ${AMPM}`)
+      }
+
+      $timer.innerHTML = `${currentHours}:${currentMinutes} ${AMPM}`
+      return interval()
     }
 
-    $timer.innerHTML = `${currentHours}:${currentMinutes} ${AMPM}`
-    return interval()
+    return
   }
 
-  timer()
+  desktopMediaQuery.addEventListener('change', timer)
+
+  window.addEventListener('load', timer)
 </script>

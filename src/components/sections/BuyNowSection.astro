@@ -1,79 +1,33 @@
 ---
-import Button from '@components/Button.astro'
+import BuyNow from '@components/BuyNow.astro'
 ---
 
 <section
   id="buy-now"
-  class="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-[#fffdea] py-[5vw] before:absolute before:-top-[20%] before:left-0 before:right-0 before:z-0 before:h-[120%] before:-translate-y-[var(--top)] before:bg-[url('/backgrounds/pen-pattern.svg')] before:opacity-10 before:transition-transform before:[background-position:center] before:[background-size:230%_200%] after:absolute after:left-0 after:top-0 after:z-[1] after:block after:h-full after:w-full after:bg-gradient-to-tl after:from-white after:via-white/80 after:to-transparent"
+  class="relative flex h-full w-full flex-col items-center justify-center gap-4 overflow-hidden bg-[#fffdea] py-12 before:absolute before:-top-[20%] before:left-0 before:right-0 before:z-0 before:h-[120%] before:-translate-y-[var(--top)] before:bg-[url('/backgrounds/pen-pattern.svg')] before:opacity-10 before:transition-transform before:[background-position:center] before:[background-size:230%_200%] after:absolute after:left-0 after:top-0 after:z-[1] after:block after:h-full after:w-full after:bg-gradient-to-tl after:from-white after:via-white/80 after:to-transparent"
   data-background
 >
-  <article
-    class="relative z-10 flex min-h-[100px] flex-col items-center justify-center gap-6 lg:flex-row"
-  >
-    <picture class="grid aspect-square w-[76vw] place-items-center sm:w-[45vw]">
-      <img
-        src="/miscellaneous/DDLC_PackShot.webp"
-        class="aspect-auto h-4/5 w-4/5 object-contain"
-        sizes="(max-width: 640px) 8vw, 50vw"
-        srcset="/miscellaneous/DDLC_PackShot-p-500.webp 500w, /miscellaneous/DDLC_PackShot-p-800.webp 800w, /miscellaneous/DDLC_PackShot-p-1080.webp 1080w, /miscellaneous/DDLC_PackShot.webp 1689w"
-        loading="lazy"
-        decoding="async"
-      />
-    </picture>
+  <BuyNow title="Will you write the way into her heart?" buttonText="Buy Now">
+    <img
+      src="/miscellaneous/DDLC_PackShot.webp"
+      class="aspect-auto h-4/5 w-4/5 object-contain"
+      sizes="(min-width: 1024px) 100vw, 50vw"
+      srcset="/miscellaneous/DDLC_PackShot-p-500.webp 500w, /miscellaneous/DDLC_PackShot-p-800.webp 800w, /miscellaneous/DDLC_PackShot-p-1080.webp 1080w, /miscellaneous/DDLC_PackShot.webp 1689w"
+      loading="lazy"
+      decoding="async"
+    />
+  </BuyNow>
 
-    <article
-      class="flex max-w-[50ch] flex-col items-center justify-center gap-6"
-      data-buy-now-article
-    >
-      <h3
-        class="max-w-[30ch] text-balance text-center font-riffic text-4xl text-doki-magenta opacity-0 animate-duration-300 md:text-6xl"
-      >
-        Will you write the way into her heart?
-      </h3>
-      <Button
-        classes="opacity-0 animate-duration-300 animate-delay-300 !text-xl !px-12"
-        link="/buy"
-        color="purple"
-        hover="pink"
-      >
-        Buy Now
-      </Button>
-    </article>
-  </article>
-
-  <article
-    class="relative z-10 flex min-h-[100px] flex-col-reverse items-center justify-center gap-6 lg:flex-row"
-  >
-    <article
-      class="flex max-w-[50ch] flex-col items-center justify-center gap-6"
-      data-buy-now-article
-    >
-      <h3
-        class="max-w-[30ch] text-center font-riffic text-4xl text-doki-magenta opacity-0 animate-duration-300 md:text-6xl"
-      >
-        Shop Merchandise
-      </h3>
-      <Button
-        classes="opacity-0 animate-duration-300 animate-delay-300 !text-xl !px-12"
-        link="/merch"
-        color="purple"
-        hover="pink"
-      >
-        See Stores
-      </Button>
-    </article>
-
-    <picture class="grid aspect-square w-[76vw] place-items-center sm:w-[40vw]">
-      <img
-        src="/miscellaneous/Plushies.webp"
-        class="aspect-auto h-4/5 w-4/5 object-contain"
-        sizes="(max-width: 479px) 76vw, 38vw"
-        srcset="/miscellaneous/Plushies-p-500.webp 500w, /miscellaneous/Plushies.webp 800w"
-        loading="lazy"
-        decoding="async"
-      />
-    </picture>
-  </article>
+  <BuyNow title="Shop Merchandise" buttonText="See Stores" reverse>
+    <img
+      src="/miscellaneous/Plushies.webp"
+      class="aspect-auto h-4/5 w-4/5 object-contain"
+      sizes="(min-width: 1024px) 100vw, 50vw"
+      srcset="/miscellaneous/Plushies-p-500.webp 500w, /miscellaneous/Plushies.webp 800w"
+      loading="lazy"
+      decoding="async"
+    />
+  </BuyNow>
 </section>
 
 <script>
@@ -88,7 +42,7 @@ import Button from '@components/Button.astro'
       if (entry.isIntersecting) {
         const $children: HTMLElement[] = [].slice.call(entry.target.children)
 
-        $children.forEach($child => {
+        $children.forEach(($child) => {
           $child.classList.add('animate-fade-up')
           $child.classList.add('opacity-100')
           $child.classList.remove('opacity-0')
@@ -99,7 +53,5 @@ import Button from '@components/Button.astro'
     })
   }, options)
 
-  $elements.forEach($el => (
-    observer.observe($el)
-  ))
+  $elements.forEach(($el) => observer.observe($el))
 </script>

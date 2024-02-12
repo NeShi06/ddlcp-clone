@@ -1,41 +1,30 @@
-import { useSignal } from '@preact/signals'
+import { useTabs } from '@/hooks/useTabs'
 import { charTabs } from '@/data/chartabs.data'
 import clsx from 'clsx'
 
-type Characters = keyof typeof charTabs
-
 function CharSection() {
-  const currentChar = useSignal('sayori')
-
-  const clickHandler = (name: string) => {
-    const clickedChar = name.toLowerCase() as Characters
-
-    if (clickedChar in charTabs) {
-      if (clickedChar === currentChar.value) return
-      return (currentChar.value = clickedChar)
-    }
-  }
+  const { state, clickHandler } = useTabs<string>({ initialState: 'sayori' })
 
   return (
     <section
       id="characters"
-      className="relative h-screen w-full overflow-hidden sm:h-[75vh] lg:h-screen ipad:h-[50vh]"
+      className="relative h-screen w-full overflow-hidden lg:h-screen lg:min-h-screen ipad:h-[50vh]"
+      data-background
     >
       {Object.entries(charTabs).map(([key, char]) => (
         <article
           key={key}
-          data-background
           className={clsx(
-            `relative h-full w-full ${char.colors.background} -z-30 flex flex-col-reverse [background-attachment:scroll] md:flex-row`,
-            { hidden: char.name.toLowerCase() !== currentChar.value },
+            `relative w-full ${char.colors.background} -z-30 flex flex-col-reverse [background-attachment:scroll] lg:h-full lg:flex-row`,
+            { hidden: char.name.toLowerCase() !== state },
             {
               'flex items-center justify-center':
-                char.name.toLowerCase() === currentChar.value
+                char.name.toLowerCase() === state
             }
           )}
         >
           <div
-            className={`absolute h-[110vh] w-full ${char.colors.background} [background-attachment:scroll] absolute left-0 top-0 -z-20 h-[150vh] flex w-full -translate-y-[var(--top)] animate-bounce bg-[url("/backgrounds/Dot_Pattern_Pink.svg")] transition-transform animate-duration-[1500ms] animate-once [background-position:50%] [background-size:80px] after:absolute after:left-0 after:top-0 after:block after:h-full after:w-full after:bg-gradient-to-b md:flex-row ${char.colors.effect}`}
+            className={`absolute h-[110vh] w-full ${char.colors.background} absolute -top-[10%] left-0 flex h-[150vh] w-full animate-up bg-[url("/backgrounds/Dot_Pattern_Pink.svg")] transition-transform animate-duration-[1500ms] [background-attachment:scroll] [background-position:50%] [background-size:80px] after:absolute after:left-0 after:top-0 after:block after:h-full after:w-full after:bg-gradient-to-b md:flex-row ${char.colors.effect} -z-50 block`}
           />
 
           <div className="relative z-50 flex h-full w-full items-center justify-center lg:w-3/5 lg:justify-end">
@@ -48,12 +37,12 @@ function CharSection() {
             </picture>
           </div>
 
-          <div className="relative z-50 mt-[10%] w-full animate-fade-left px-4 animate-duration-300 lg:mt-0 lg:w-2/5 lg:px-0">
+          <div className="relative z-50 mt-[10%] w-full animate-fade-left px-4 animate-duration-300 lg:top-[unset] lg:mt-0 lg:w-2/5 lg:px-0">
             <h2 className="mb-4 text-center font-riffic text-4xl font-bold text-white md:text-6xl lg:text-start">
               {char.name}
             </h2>
             <p
-              className={`max-w-[60ch] text-pretty text-center font-aller text-lg leading-6 lg:max-w-[35ch] lg:text-start ${char.colors.text}`}
+              className={`mx-auto max-w-[60ch] text-pretty text-center font-aller text-lg font-medium leading-6 lg:mx-[unset] lg:max-w-[35ch] lg:text-start ${char.colors.text}`}
             >
               {char.text}
             </p>
@@ -65,22 +54,19 @@ function CharSection() {
         {Object.entries(charTabs).map(([key, char]) => (
           <li
             key={key}
-            onClick={() => clickHandler(char.name)}
+            onClick={() => clickHandler(char.name.toLowerCase())}
             className={clsx(
-              'mx-auto flex min-h-[120px] justify-center px-3 sm:w-[120px] lg:px-5',
+              'group mx-auto flex min-h-[120px] cursor-pointer justify-center px-3 sm:w-[120px] lg:px-5',
               {
                 'bg-gradient-to-t from-white to-transparent':
-                  char.name.toLowerCase() === currentChar.value
+                  char.name.toLowerCase() === state
               }
             )}
           >
             <button
               className={clsx(
-                'h-full w-full translate-y-0 transition-transform hover:scale-110',
-                {
-                  '!-translate-y-5':
-                    char.name.toLowerCase() === currentChar.value
-                }
+                'h-full w-full translate-y-0 transition-transform group-hover:scale-110',
+                { '!-translate-y-5': char.name.toLowerCase() === state }
               )}
             >
               <img

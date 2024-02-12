@@ -6,7 +6,7 @@ export const charTabs = {
       background: 'bg-doki-sayori',
       text: 'text-doki-sayori-text',
       effect:
-        'opacity-20 after:from-transparent after:from-5% after:via-[#9ccaff]/60 after:via-25% after:to-[#9ccaff] after:to-70%'
+        'opacity-30 after:from-transparent after:from-5% after:via-[#9ccaff]/60 after:via-25% after:to-[#9ccaff] after:to-70%'
     },
     images: {
       chibi: '/characters/Sayori-Chibi-HC.webp',
@@ -29,7 +29,7 @@ export const charTabs = {
       background: 'bg-doki-natsuki',
       text: 'text-doki-natsuki-text',
       effect:
-        'opacity-20 after:from-transparent after:from-5% after:via-[#ffa7e3]/60 after:via-25% after:to-[#ffa7e3] after:to-70%'
+        'opacity-30 after:from-transparent after:from-5% after:via-[#ffa7e3]/60 after:via-25% after:to-[#ffa7e3] after:to-70%'
     },
     images: {
       chibi: '/characters/Natsuki-Chibi-HC.webp',
@@ -52,7 +52,7 @@ export const charTabs = {
       background: 'bg-doki-yuri',
       text: 'text-doki-yuri-text',
       effect:
-        'opacity-20 after:from-transparent after:from-5% after:via-[#a9a5ff]/60 after:via-25% after:to-[#a9a5ff] after:to-70%'
+        'opacity-30 after:from-transparent after:from-5% after:via-[#a9a5ff]/60 after:via-25% after:to-[#a9a5ff] after:to-70%'
     },
     images: {
       chibi: '/characters/Yuri-Chibi-HC.webp',
@@ -75,7 +75,7 @@ export const charTabs = {
       background: 'bg-doki-monika',
       text: 'text-doki-monika-text',
       effect:
-        'opacity-50 after:from-transparent after:from-5% after:via-[#9ff3bc]/60 after:via-25% after:to-[#9ff3bc] after:to-70%'
+        'opacity-80 after:from-transparent after:from-5% after:via-[#9ff3bc]/60 after:via-25% after:to-[#9ff3bc] after:to-70%'
     },
     images: {
       chibi: '/characters/Monika-Chibi-HC.webp',

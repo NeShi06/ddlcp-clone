@@ -1,0 +1,34 @@
+---
+import { featuresData } from '@/data/features.data'
+---
+
+<div class="grid w-full gap-8 py-12 lg:hidden">
+  {
+    featuresData.map(({ img, title, text }, i) => (
+      <article
+        class:list={[
+          'flex w-10/12 flex-col',
+          { 'justify-self-start ps-6': i % 2 === 0 },
+          { 'justify-self-end	pe-6': i % 2 !== 0 }
+        ]}
+      >
+        <header class="flex h-12 w-full items-center bg-[linear-gradient(270deg,_#831f8a,_#e61484)]  px-3 py-2 sm:h-10">
+          <img
+            src={img.white}
+            class="relative left-0 top-0 me-2 h-5 w-5 object-contain"
+            decoding="async"
+            loading="lazy"
+            alt="An icon"
+          />
+          <h3 class="font-aller text-white">{title}</h3>
+        </header>
+
+        <img src={`/banners/Banner_0${i + 1}.webp`} class="aspect-video" />
+
+        <div class="bg-white p-5">
+          <p class="text-pretty font-aller text-doki-purple">{text}</p>
+        </div>
+      </article>
+    ))
+  }
+</div>

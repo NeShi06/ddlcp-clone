@@ -27,7 +27,22 @@ export default {
 			},
       screens: {
         'ipad': { 'raw': '(min-height: 900px) and (min-width: 1024px) and (max-width: 1280px)' }
-      }
+      },
+			animation: {
+				'up': 'Up 1s forwards',
+			},
+			keyframes: {
+				'Up': {
+					'0%': {
+						transform: 'translateY(2.5rem)',
+						"background-size": "80px",
+						"background-position": "50%"
+					},
+					'100%': {
+						transform: 'translateY(calc(var(--top) * -1))',
+					}
+				},
+			}
 		},
 	},
 	plugins: [

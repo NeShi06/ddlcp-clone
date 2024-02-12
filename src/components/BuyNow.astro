@@ -1,0 +1,42 @@
+---
+import Button from './Button.astro'
+
+interface Props {
+  reverse?: boolean
+  title: string
+  buttonText: string
+}
+
+const { reverse = false, title, buttonText } = Astro.props
+---
+
+<section
+  class:list={[
+    'relative z-10 flex min-h-[100px] flex-col items-center justify-center gap-6',
+    { 'lg:flex-row': reverse === false },
+    { 'lg:flex-row-reverse': reverse === true }
+  ]}
+>
+  <picture class="grid aspect-square w-[85vw] place-items-center sm:w-[45vw]">
+    <slot />
+  </picture>
+
+  <article
+    class="flex max-w-[50ch] flex-col items-center justify-center gap-6"
+    data-buy-now-article
+  >
+    <h3
+      class="max-w-[30ch] text-balance text-center font-riffic text-4xl text-doki-magenta opacity-0 animate-duration-300 md:text-6xl"
+    >
+      {title}
+    </h3>
+    <Button
+      classes="opacity-0 animate-duration-300 animate-delay-300 !text-xl !px-12"
+      link="/buy"
+      color="purple"
+      hover="pink"
+    >
+      {buttonText}
+    </Button>
+  </article>
+</section>

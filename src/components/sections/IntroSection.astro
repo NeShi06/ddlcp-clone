@@ -5,15 +5,15 @@ import HeaderStore from './IntroStore.astro'
 <header id="intro" class="relative z-10 h-[220vh] w-full">
   <div class="relative h-screen w-full">
     <article
-      class="fixed flex h-screen w-full items-center justify-center overflow-hidden [&>picture]:-translate-y-[var(--top)]"
+      class="fixed flex h-screen w-full items-center justify-center overflow-hidden bg-doki-lighter-pink [&>picture]:-translate-y-[var(--top)]"
     >
       <picture
-        class="absolute left-0 top-0 h-[110vh] w-full max-w-full transition-transform duration-300"
+        class="absolute left-0 top-0 -z-50 block transition-transform duration-300"
         data-background
       >
         <img
           src="/backgrounds/WindowScreen_BG.webp"
-          class="relative h-full w-full object-cover"
+          class="relative h-[110vh] w-full max-w-full object-cover"
           sizes="100vw"
           srcset="/backgrounds/WindowScreen_BG-p-500.webp 500w, /backgrounds/WindowScreen_BG-p-800.webp 800w, /backgrounds/WindowScreen_BG-p-1600.webp 1600w, /backgrounds/WindowScreen_BG.webp 1920w"
           fetchpriority="low"
@@ -26,12 +26,10 @@ import HeaderStore from './IntroStore.astro'
         id="logo"
         class="absolute top-0 z-20 flex h-full -translate-y-[var(--top,_2.5rem)] flex-col items-center justify-center gap-4"
       >
-        <picture
-          class="flex aspect-square h-min w-full max-w-[175px] items-center justify-center sm:max-w-[280px] md:max-w-[320px] lg:max-w-[280px] xl:max-w-[320px]"
-        >
+        <picture class="flex aspect-square items-center justify-center">
           <img
             src="/miscellaneous/DDLC-Plus-Logo_Circle-p-320.webp"
-            class="relative mb-2 block animate-fade object-cover animate-delay-1000 animate-duration-700"
+            class="relative mb-2 block h-min w-full max-w-[175px] animate-fade object-cover animate-delay-1000 animate-duration-700 sm:max-w-[280px] md:max-w-[320px] lg:max-w-[280px] xl:max-w-[320px]"
             width="320"
             height="320"
             fetchpriority="low"
@@ -49,12 +47,12 @@ import HeaderStore from './IntroStore.astro'
       </figure>
 
       <picture
-        class="absolute -right-[20%] h-screen max-w-[250px] sm:-right-24 -top-[5%] sm:h-[110vh] sm:max-w-[380px] lg:top-[6%] lg:max-w-[600px] xl:-right-[5%] xl:top-[8%] xl:h-full xl:max-h-[75vw] ipad:-right-[20%]"
+        class="absolute -right-[20%] -top-[5%] sm:-right-24 lg:top-[6%] xl:-right-[5%] xl:top-[8%] ipad:-right-[20%]"
         data-back-character
       >
         <img
           src="/characters/Natsuki-hc-724.webp"
-          class="z-10 h-full animate-fade-left object-scale-down animate-delay-700 animate-duration-700"
+          class="z-10 block h-screen max-w-[250px] animate-fade-left object-scale-down animate-delay-700 animate-duration-700 sm:h-[110vh] sm:max-w-[380px] lg:max-w-[600px] xl:h-screen"
           srcset="/characters/Natsuki-hc-724.webp 724w, /characters/Natsuki-hc-724-p-500.webp 500w, /characters/Natsuki-hc-724-p-250.webp 250w"
           sizes="(min-width: 1024px) 100vw, (min-width: 640px) 33vw, 8vw"
           fetchpriority="high"
@@ -63,12 +61,12 @@ import HeaderStore from './IntroStore.astro'
       </picture>
 
       <picture
-        class="absolute -left-[20%] h-screen max-w-[250px] sm:-left-32 -top-[5%] sm:h-[110vh] sm:max-w-[380px] lg:top-[6%] lg:max-w-[600px] xl:-left-[6%] xl:top-[8%] xl:h-full xl:max-h-[75vw] ipad:-left-[20%]"
+        class="absolute -left-[20%] -top-[5%] sm:-left-32 lg:top-[6%] xl:-left-[6%] xl:top-[8%] ipad:-left-[20%]"
         data-back-character
       >
         <img
           src="/characters/Sayori-hc-724.webp"
-          class="z-10 h-full animate-fade-right object-scale-down animate-delay-700 animate-duration-700"
+          class="z-10 block h-screen max-w-[250px] animate-fade-right object-scale-down animate-delay-700 animate-duration-700 sm:h-[110vh] sm:max-w-[380px] lg:max-w-[600px] xl:h-screen"
           srcset="/characters/Sayori-hc-724.webp 724w, /characters/Sayori-hc-724-p-500.webp 500w, /characters/Sayori-hc-724-p-250.webp 250w"
           sizes="(min-width: 1024px) 100vw, (min-width: 640px) 33vw, 8vw"
           fetchpriority="high"
@@ -78,12 +76,12 @@ import HeaderStore from './IntroStore.astro'
       </picture>
 
       <picture
-        class="absolute -right-[32%] top-[45%] h-[140vw] max-w-[250px] sm:-right-36 sm:top-[25%] sm:h-[125vh] sm:max-w-[420px] lg:top-[30%] lg:right-0 lg:h-[115vh] lg:max-w-[600px] xl:right-[2.5%] xl:top-[28.5%] xl:max-h-[75vw] ipad:-right-[25%]"
+        class="absolute -right-[32%] top-[45%] sm:-right-36 sm:top-[25%] lg:right-0 lg:top-[30%] xl:right-[2.5%] xl:top-[28.5%] xl:max-h-[75vw] ipad:-right-[25%]"
         data-front-character
       >
         <img
           src="/characters/Monika-hc-724.webp"
-          class="z-10 h-full animate-fade-left object-scale-down animate-delay-1000 animate-duration-700"
+          class="z-10 block h-[140vw] max-w-[250px] animate-fade-left object-scale-down animate-delay-1000 animate-duration-700 sm:h-[125vh] sm:max-w-[420px] lg:h-[115vh] lg:max-w-[600px]"
           srcset="/characters/Monika-hc-724.webp 724w, /characters/Monika-hc-724-p-500.webp 500w, /characters/Monika-hc-724-p-250.webp 250w"
           sizes="(min-width: 1024px) 100vw, (min-width: 640px) 33vw, 8vw"
           fetchpriority="high"
@@ -93,12 +91,12 @@ import HeaderStore from './IntroStore.astro'
       </picture>
 
       <picture
-        class="absolute -left-[18%] top-[45%] h-[140vw] max-w-[250px] sm:-left-20 sm:top-[25%] sm:h-[125vh] sm:max-w-[420px] lg:left-[5%] lg:top-[30%] lg:h-[115vh] lg:max-w-[600px] xl:left-[8%] xl:top-[28.5%] xl:max-h-[75vw] ipad:-left-[10%]"
+        class="absolute -left-[18%] top-[45%] sm:-left-20 sm:top-[25%] lg:left-[5%] lg:top-[30%] xl:left-[8%] xl:top-[28.5%] ipad:-left-[10%]"
         data-front-character
       >
         <img
           src="/characters/Yuri-hc-724.webp"
-          class="z-10 h-full animate-fade-right object-scale-down animate-delay-1000 animate-duration-700"
+          class="z-10 block h-[140vw] max-w-[250px] animate-fade-right object-scale-down animate-delay-1000 animate-duration-700 sm:h-[125vh] sm:max-w-[420px] lg:h-[115vh] lg:max-w-[600px]"
           srcset="/characters/Yuri-hc-724.webp 724w, /characters/Yuri-hc-724-p-500.webp 500w, /characters/Yuri-hc-724-p-250.webp 250w"
           sizes="(min-width: 1024px) 100vw, (min-width: 640px) 33vw, 8vw"
           fetchpriority="high"
