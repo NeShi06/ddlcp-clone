@@ -15,7 +15,7 @@ function CharSection() {
         <article
           key={key}
           className={clsx(
-            `relative w-full ${char.colors.background} -z-30 flex flex-col-reverse [background-attachment:scroll] lg:h-full lg:flex-row`,
+            `relative h-full w-full ${char.colors.background} -z-30 flex flex-col-reverse [background-attachment:scroll] lg:h-full lg:flex-row`,
             { hidden: char.name.toLowerCase() !== state },
             {
               'flex items-center justify-center':
